@@ -1,0 +1,7 @@
+{
+  "preset": "standard",
+
+  "parserOptions": {
+    "sourceType": "module"
+  }
+}

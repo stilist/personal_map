@@ -1,0 +1,29 @@
+{
+  "name": "personal_map",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Jordan Cole <stilist@ratafia.info>",
+  "license": "MIT",
+  "devDependencies": {
+    "css-loader": "^0.28.0",
+    "eslint": "^3.19.0",
+    "eslint-config-standard": "^10.2.1",
+    "extract-text-webpack-plugin": "^2.1.0",
+    "file-loader": "^0.11.1",
+    "leaflet": "^1.0.3",
+    "leaflet.markercluster": "^1.0.4",
+    "leaflet.visualclick": "^1.1.4",
+    "serve": "^5.1.4",
+    "style-loader": "^0.16.1",
+    "url-loader": "^0.5.8",
+    "webpack": "^2.4.1",
+    "whatwg-fetch": "^2.0.3"
+  },
+  "scripts": {
+    "postinstall": "npm run build",
+    "build": "webpack --progress",
+    "buildwatch": "webpack --progress --watch",
+    "lint": "eslint src/",
+    "start": "serve"
+  }
+}

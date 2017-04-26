@@ -1,0 +1,20 @@
+@import '../node_modules/leaflet/dist/leaflet.css';
+@import '../node_modules/leaflet.markercluster/dist/MarkerCluster.css';
+@import '../node_modules/leaflet.markercluster/dist/MarkerCluster.Default.css';
+@import '../node_modules/leaflet.visualclick/dist/L.VisualClick.css';
+
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  background-color: #000;
+}
+
+#map {
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
