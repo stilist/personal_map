@@ -1,5 +1,5 @@
 import L from 'leaflet'
-import map from './map'
+import map, { baseLayers } from './map'
 
 /**
  * This list of colors is taken from the Moves documentation.

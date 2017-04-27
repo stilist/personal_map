@@ -32,7 +32,7 @@ const attribution = [
   '© <a href=https://www.mapbox.com/about/maps/>Mapbox</a>',
 ].join(', ')
 
-const baseLayers = baseLayerNames.reduce((memo, layer) => {
+export const baseLayers = baseLayerNames.reduce((memo, layer) => {
   const stylePrefix = layer[1].match(/^(\w+)/)[0]
   const baseLayerURL = baseLayerURLs[stylePrefix]
 
@@ -61,4 +61,3 @@ const map = L.map(mapEl, {
 })
 export default map
 
-L.control.layers(baseLayers).addTo(map)
