@@ -65,5 +65,7 @@ const map = L.map(mapEl, {
 export default map
 
 new L.Control.GlobeMiniMap({
+  land: '#ded',
   topojsonSrc: require('url-loader?limit=1!leaflet-globe-minimap/src/world.json'),
+  water: 'rgba(128, 128, 145, 0.3)',
 }).addTo(map)
