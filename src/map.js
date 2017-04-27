@@ -2,6 +2,9 @@
 
 import L from 'leaflet'
 import 'leaflet.visualclick'
+import 'd3'
+import 'topojson'
+import 'leaflet-globe-minimap/src/Control.GlobeMiniMap'
 
 // Fix image URL lookup for Webpack.
 //
@@ -61,3 +64,6 @@ const map = L.map(mapEl, {
 })
 export default map
 
+new L.Control.GlobeMiniMap({
+  topojsonSrc: require('url-loader?limit=1!leaflet-globe-minimap/src/world.json'),
+}).addTo(map)
