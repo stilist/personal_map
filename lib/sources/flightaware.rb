@@ -23,13 +23,15 @@ class Flightaware
 
     json.map do |row|
       coordinates = row['points'].map do |point|
-        [point['longitude'], point['latitude']].freeze
+        [point['longitude'], point['latitude'], point['altitude']].freeze.compact
       end
 
       {
         coordinates: [coordinates],
         properties: {
           activity: 'airplane',
+          endTime: row['endTime'],
+          startTime: row['startTime'],
         }.freeze,
       }.freeze
     end
