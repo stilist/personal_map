@@ -27,7 +27,7 @@ class ToGeojsonPoint
       type: 'Feature',
       geometry: {
         type: 'Point',
-        coordinates: [row[:lng], row[:lat]].freeze
+        coordinates: [row[:lng], row[:lat], row[:altitude]].freeze.compact,
       }.freeze,
       properties: {
         type: 'place',
