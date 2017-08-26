@@ -16,7 +16,7 @@ OUTPUT_ROOT = ::File.expand_path('tmp')
 end
 
 source_types = {
-  path: %i(flightaware google gpx moves openpaths),
+  path: %i(flightaware google gpx moves moves_raw openpaths),
   point: %i(dopplr facebook foursquare google gowalla gpx photos reporter),
 }
 
