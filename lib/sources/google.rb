@@ -44,11 +44,14 @@ class Google
 
   def process_history_row(data)
     {
+      coordinates: [
+        data['latitudeE7'] / 1e7,
+        data['longitudeE7'] / 1e7,
+        data['altitude'],
+      ],
       name: '',
       note: nil,
-      lat: data['latitudeE7'] / 1e7,
-      lng: data['longitudeE7'] / 1e7,
-      timestamp: Date.strptime(data['timestampMs'], '%Q')
+      timestamp: Time.strptime(data['timestampMs'], '%Q').iso8601,
     }.freeze
   end
 end

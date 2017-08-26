@@ -25,11 +25,15 @@ class ToGeojsonPoint
   private
 
   def build_point(row)
+    coordinates = if row[:coordinates] then row[:coordinates]
+                  else [row[:lng], row[:lat], row[:altitude]].freeze
+                  end
+
     {
       type: 'Feature',
       geometry: {
         type: 'Point',
-        coordinates: [row[:lng], row[:lat], row[:altitude]].freeze,
+        coordinates: coordinates,
       }.freeze,
       properties: {
         type: 'place',
