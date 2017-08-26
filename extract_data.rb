@@ -17,7 +17,7 @@ end
 
 source_types = {
   path: %i(flightaware google gpx moves moves_raw openpaths),
-  point: %i(dopplr facebook foursquare google gowalla gpx photos reporter),
+  point: %i(dopplr facebook foursquare google gowalla gpx moves photos reporter),
 }
 
 source_types.each do |source_type, sources|

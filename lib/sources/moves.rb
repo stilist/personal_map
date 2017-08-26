@@ -3,15 +3,15 @@
 require 'json'
 require 'time'
 require_relative '../to_geojson_path'
+require_relative '../to_geojson_point'
 
 class Moves
   def initialize(root:, type:)
-    raw = ::File.read("#{root}_export/geojson/full/storyline.geojson")
-    processed = process_data(raw).flatten(1).
-      compact
-
-    @data = ::ToGeojsonPath.new(data: processed).
-      geojson
+    @root = root
+    @data = case type
+      when :path then extract_paths
+      when :point then extract_points
+    end
   end
 
   def geojson
@@ -20,13 +20,47 @@ class Moves
 
   private
 
+  def extract_points
+    raw = ::File.read("#{@root}_export/geojson/full/places.geojson")
+    processed = process_point_data(raw)
+  end
+
+  def process_point_data(data)
+    json = ::JSON.parse(data)
+
+    processed = json['features'].map do |row|
+      properties = row['properties']
+      coordinates = row.dig('geometry', 'coordinates')
+
+      {
+        lat: coordinates[1],
+        lng: coordinates[0],
+        name: properties['name'],
+        startTime: properties['startTime'],
+        endTime: properties['endTime'],
+      }.freeze
+    end
+
+    ::ToGeojsonPoint.new(data: processed).
+      geojson
+  end
+
+  def extract_paths
+    raw = ::File.read("#{@root}_export/geojson/full/storyline.geojson")
+    processed = process_path_data(raw).flatten(1).
+      compact
+
+    ::ToGeojsonPath.new(data: processed).
+      geojson
+  end
+
   # Some activity segments don't include +startTime+ / +endTime+, but
   # they may have a +duration+ that can be used if the next segment
   # *does* include +startTime+ / +endTime+.
   #
   # @todo +activities+ usually includes its own +startTime+ / +endTime+ that
   #   can be used if there's not a subsequent event.
-  def parseTimes(activities, index)
+  def parse_activity_times(activities, index)
     activity = activities[index]
 
     startTime = activity.key?('startTime') ? Time.parse(activity['startTime']) : nil
@@ -43,7 +77,7 @@ class Moves
     [startTime, endTime].map { |t| t&.iso8601 }
   end
 
-  def process_data(data)
+  def process_path_data(data)
     json = ::JSON.parse(data)
 
     json['features'].select { |row| row['geometry']['type'] == 'MultiLineString' }.
@@ -58,7 +92,7 @@ class Moves
           next if activity['activity'] == 'airplane' &&
             activity['distance'] > 50_000
 
-          startTime, endTime = parseTimes(activities, index)
+          startTime, endTime = parse_activity_times(activities, index)
           {
             coordinates: [coordinates[index]].freeze,
             properties: {
