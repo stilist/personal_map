@@ -35,9 +35,9 @@ class Moves
       {
         lat: coordinates[1],
         lng: coordinates[0],
-        name: properties['name'],
-        startTime: properties['startTime'],
-        endTime: properties['endTime'],
+        name: properties.dig('place', 'name'),
+        startTime: Time.parse(properties['startTime']).iso8601,
+        endTime: Time.parse(properties['endTime']).iso8601,
       }.freeze
     end
 
