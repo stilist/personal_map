@@ -8,6 +8,8 @@ class ToGeojsonPoint
     valid_points = points.reject do |row|
       coords = row[:geometry][:coordinates]
 
+      # @note This will cause problems if something ever is at 0,0 -- but that
+      #   seems pretty unlikely.
       coords[0].nil? || (coords[0] == 0 && coords[1] == 0)
     end
 
@@ -27,24 +29,24 @@ class ToGeojsonPoint
       type: 'Feature',
       geometry: {
         type: 'Point',
-        coordinates: [row[:lng], row[:lat], row[:altitude]].freeze.compact,
+        coordinates: [row[:lng], row[:lat], row[:altitude]].freeze,
       }.freeze,
       properties: {
         type: 'place',
-        startTime: row[:timestamp],
-        endTime: row[:timestamp],
+        startTime: row[:startTime] || row[:timestamp],
+        endTime: row[:endTime] || row[:timestamp],
         place: {
           name: row[:name],
-          note: row[:note] || ''
-        }.freeze
-      }.freeze
+          note: row[:note],
+        }.freeze,
+      }.freeze,
     }.freeze
   end
 
   def wrap_points(points)
     {
       type: 'FeatureCollection',
-      features: points
+      features: points,
     }.freeze
   end
 end

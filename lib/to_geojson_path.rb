@@ -5,9 +5,8 @@ require 'json'
 class ToGeojsonPath
   def initialize(data:)
     items = data.map { |row| build(row) }
-    valid_items = items.reject { |row| row.flatten.empty? }
 
-    @data = wrap(valid_items)
+    @data = wrap(items)
   end
 
   attr_reader :data
@@ -18,6 +17,14 @@ class ToGeojsonPath
 
   private
 
+  DEFAULT_PROPERTIES = {
+    activity: nil,
+    name: nil,
+    note: nil,
+    startTime: nil,
+    endTime: nil,
+  }.freeze
+
   def build(row)
     {
       type: 'Feature',
@@ -25,7 +32,7 @@ class ToGeojsonPath
         type: 'MultiLineString',
         coordinates: row[:coordinates],
       }.freeze,
-      properties: (row[:properties] || {}),
+      properties: row[:properties] || DEFAULT_PROPERTIES,
     }.freeze
   end
 
