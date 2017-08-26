@@ -29,7 +29,14 @@ class MovesRaw
   end
 
   def process_data(data)
-    require 'byebug'
+    activity_table = {
+      'run' => 'running',
+      # +trp+ is technically 'transport', but since the output data doesn't
+      # include flights this almost certainly means driving ('car').
+      'trp' => 'car',
+      'wlk' => 'walking',
+    }.freeze
+
     data['export'].map do |date|
       next if date['segments'].nil?
       with_points = date['segments'].select { |segment| segment['type'] == 'move' }
@@ -42,9 +49,11 @@ class MovesRaw
           next if activity['distance'] > 1_000_000
 
           {
-            coordinates: [activity['trackPoints'].map { |point| [point['lon'], point['lat']].freeze }],
+            coordinates: [activity['trackPoints'].map { |point| [point['lon'], point['lat'], nil].freeze }],
             properties: {
-              activity: activity['activity'] == 'wlk' ? 'walking' : 'car',
+              activity: activity_table[activity['activity']],
+              startTime: Time.parse(activity['startTime']).iso8601,
+              endTime: Time.parse(activity['endTime']).iso8601,
             }.freeze,
           }.freeze
         end
