@@ -49,7 +49,7 @@ module Parser
       pattern = /(?<lon>#{coordinate}),(?<lat>#{coordinate}),(?<alt>#{coordinate})/
       matches = point.match(pattern)
 
-      [matches[:lon].to_f, matches[:lat].to_f].freeze
+      [matches[:lon].to_f, matches[:lat].to_f, matches[:alt]&.to_f].freeze
     end
   end
 end
