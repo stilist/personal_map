@@ -28,9 +28,13 @@ class Openpaths
       {
         coordinates: [
           [
-            [row['lon'], row['lat']].freeze
+            [row['lat'], row['lon'], row['alt']].freeze
           ].freeze
-        ].freeze
+        ].freeze,
+        properties: {
+          startTime: Time.at(row['t']).iso8601,
+          endTime: Time.at(row['t']).iso8601,
+        },
       }.freeze
     end
   end
