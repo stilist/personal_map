@@ -1,5 +1,7 @@
 import L from 'leaflet'
 import map, { baseLayers } from './map'
+import isInTimeRange from './is_in_time_range'
+
 
 /**
  * This list of colors is taken from the Moves documentation.
@@ -111,7 +113,16 @@ const dashes = {
   car: '5, 5',
 }
 
+const rangeStart = new Date('1900-01-01T00:00:00Z')
+const rangeEnd = new Date('2100-01-13T00:00:00Z')
+
 const activityOptions = {
+  filter: feature => {
+    return isInTimeRange(feature.properties.startTime,
+                         feature.properties.endTime,
+                         rangeStart,
+                         rangeEnd)
+  },
   style: feature => {
     let activity = feature.properties.activity
     let color = activities[activity] || '#fc0'
