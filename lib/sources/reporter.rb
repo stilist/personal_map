@@ -28,14 +28,20 @@ class Reporter
   end
 
   def process_row(data)
-     name = data['placemark'] ? data['placemark']['name'] : ''
+    # Timestamp is included both as a float and as an ISO 8601 timestamp.
+    timestamp = if data['timestamp'].is_a?(String) then Time.parse(data['timestamp'])
+                # +timestamp+ doesn't include a leading +1+.
+                else Time.at(data['timestamp'] + 10e8).iso8601
+                end
 
     {
-      name: name,
-      note: nil,
-      lat: data['latitude'],
-      lng: data['longitude'],
-      timestamp: data['timestamp']
+      coordinates: [
+        data['latitude'],
+        data['longitude'],
+        nil,
+      ].freeze,
+      name: data.dig('placemark', 'name'),
+      timestamp: timestamp,
     }.freeze
   end
 end
