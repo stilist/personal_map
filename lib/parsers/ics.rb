@@ -30,7 +30,7 @@ module Parser
 
     def row_for_geojson(row)
       if row.description == row.summary
-        note = ''
+        note = nil
       else
         note = row.description.
           sub("#{row.summary} - ", '')
@@ -40,11 +40,11 @@ module Parser
         sub('@ ', '')
 
       {
+        coordinates: row.geo.push(nil),
         name: name,
         note: note,
-        lat: row.geo[0],
-        lng: row.geo[1],
-        timestamp: row.dtstart
+        startTime: row.dtstart.to_time.iso8601,
+        endTime: row.dtend.to_time.iso8601,
       }.freeze
     end
   end
