@@ -2,7 +2,7 @@
 // @param [<Date, string>] targetEnd - The time to validate.
 // @param [<Date, string>] rangeStart - The start of the valid time range.
 // @param [<Date, string>] rangeEnd - The end of the valid time range.
-export default function isInTimeRange(targetStart, targetEnd, rangeStart, rangeEnd) {
+export default function isInTimeRange (targetStart, targetEnd, rangeStart, rangeEnd) {
   if (!targetStart) return false
   if (!targetEnd) return false
   if (!rangeStart) return false
