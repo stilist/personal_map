@@ -60,6 +60,7 @@ const map = L.map(mapEl, {
   // @see https://en.wikipedia.org/wiki/Geographic_center_of_the_contiguous_United_States
   center: [39.833333, -98.583333],
   layers: baseLayerNames.map(layer => baseLayers[layer[0]]),
+  maxZoom: 18,
   visualClickEvents: 'dblclick',
   zoom: 5
 })
