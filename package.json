@@ -2,7 +2,7 @@
   "name": "personal_map",
   "version": "1.0.0",
   "main": "index.js",
-  "author": "Jordan Cole <stilist@ratafia.info>",
+  "author": "Jordan Cole <code@ratafia.info>",
   "license": "MIT",
   "devDependencies": {
     "css-loader": "^0.28.7",
