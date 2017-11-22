@@ -1,5 +1,3 @@
-'use strict'
-
 import L from 'leaflet'
 import 'leaflet.visualclick'
 import 'd3'
