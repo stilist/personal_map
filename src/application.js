@@ -1,6 +1,5 @@
 // @note Import the map here so it can start rendering while the path & point
 //   data loads.
-import map from './map'
 import renderPaths from './render_paths'
 import renderPoints from './render_points'
 // @note Import extra files so Webpack knows about them.
