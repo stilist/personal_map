@@ -5,6 +5,7 @@ import 'leaflet.visualclick'
 import 'd3'
 import 'topojson'
 import 'leaflet-globe-minimap/src/Control.GlobeMiniMap'
+import Geocoder from 'leaflet-geocoder-mapzen'
 
 // Fix image URL lookup for Webpack.
 //
@@ -69,3 +70,5 @@ new L.Control.GlobeMiniMap({
   topojsonSrc: require('url-loader?limit=1!leaflet-globe-minimap/src/world.json'),
   water: 'rgba(128, 128, 145, 0.3)',
 }).addTo(map)
+
+L.control.geocoder('mapzen-o7EsTfi').addTo(map)

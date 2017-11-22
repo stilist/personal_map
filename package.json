@@ -16,6 +16,7 @@
     "extract-text-webpack-plugin": "^2.1.0",
     "file-loader": "^0.11.1",
     "leaflet": "~1.2.0",
+    "leaflet-geocoder-mapzen": "^1.9.2",
     "leaflet-globe-minimap": "https://github.com/chriswhong/leaflet-globeminimap",
     "leaflet.markercluster": "^1.0.4",
     "leaflet.visualclick": "^1.1.4",
