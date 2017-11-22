@@ -21,6 +21,14 @@ module.exports = {
     }, {
       test: /\.(gif|jpe?g|png)$/,
       loader: 'file-loader',
+    }, {
+      test: /\.json$/,
+      use: [{
+        loader: 'url-loader',
+        options: {
+          limit: 1,
+        },
+      }],
     }],
   },
   plugins: [
