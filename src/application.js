@@ -1,5 +1,3 @@
-import 'whatwg-fetch'
-
 // @note Import the map here so it can start rendering while the path & point
 //   data loads.
 import map from './map'
