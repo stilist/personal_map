@@ -1,13 +1,16 @@
-// @note Import the map here so it can start rendering while the path & point
-//   data loads.
-import renderPaths from './render_paths'
-import renderPoints from './render_points'
+import {
+  renderPaths,
+  renderPoints
+} from 'prebaked-geojson-map'
+import addBaseLayers from './layers'
+import map from './map'
 // @note Import extra files so Webpack knows about them.
 import './application.css'
 
+addBaseLayers()
 window.fetch('path_data.json')
   .then(response => response.json())
-  .then(data => renderPaths(data.features))
+  .then(data => renderPaths(data, map))
 window.fetch('point_data.json')
   .then(response => response.json())
-  .then(data => renderPoints(data.features))
+  .then(data => renderPoints(data, map))

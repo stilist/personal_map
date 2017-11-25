@@ -1,6 +1,6 @@
 # Personal map
 
-Collects location data from your [history export](https://github.com/stilist/history_importer).
+Collects and display location data from your [history export](https://github.com/stilist/history_importer). Uses [`prebaked-geojson-map`](https://github.com/stilist/prebaked-geojson-map).
 
 ## Usage
 

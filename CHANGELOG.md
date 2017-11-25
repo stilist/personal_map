@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Changed
 - Upgrade all npm packages
 - Fix lint errors that appeared after eslint upgrade
+- Rebuild using `prebaked-geojson-map`
 
 ## 0.0.1 - 2017-04-25
 ### Added

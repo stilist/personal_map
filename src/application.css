@@ -1,6 +1,4 @@
-@import '../node_modules/leaflet/dist/leaflet.css';
-@import '../node_modules/leaflet.markercluster/dist/MarkerCluster.css';
-@import '../node_modules/leaflet.markercluster/dist/MarkerCluster.Default.css';
+@import '../node_modules/prebaked-geojson-map/dist/index.css';
 @import '../node_modules/leaflet.visualclick/dist/L.VisualClick.css';
 @import '../node_modules/leaflet-geocoder-mapzen/dist/leaflet-geocoder-mapzen.css';
 
