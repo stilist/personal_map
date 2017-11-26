@@ -37,19 +37,22 @@ module Parser
 
       points = coordinates.text.split(' ')
       {
-        coordinates: [points.map { |point| row_for_geojson(point) }].freeze,
+        coordinates: [points.map { |point| extract_coordinates(point) }].freeze,
         properties: {
           activity: activity,
         }.freeze,
       }.freeze
     end
 
-    def row_for_geojson(point)
-      coordinate = /-?\d{1,3}\.\d+/
-      pattern = /(?<lon>#{coordinate}),(?<lat>#{coordinate}),(?<alt>#{coordinate})/
-      matches = point.match(pattern)
-
-      [matches[:lon].to_f, matches[:lat].to_f, matches[:alt]&.to_f].freeze
+    # @example
+    #   extract_coordinates("-122.6817855911751,45.52572423965363")
+    #   #=> [-122.6817855911751, 45.52572423965363, nil]
+    #   extract_coordinates("-76.97092,40.35459,0.0")
+    #   #=> [-76.97092, 40.35459, 0.0]
+    def extract_coordinates(point)
+      Array.new(3).
+        replace(point.scan(/-?\d{1,3}\.\d+/)).
+        map { |n| n&.to_f }
     end
   end
 end
