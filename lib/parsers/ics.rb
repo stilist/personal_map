@@ -29,7 +29,7 @@ module Parser
     end
 
     def row_for_geojson(row)
-      if row.description == row.summary
+      if row.description == row.summary || row.description == 'No notes so far.'
         note = nil
       else
         note = row.description.
