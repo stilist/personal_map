@@ -13,6 +13,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Upgrade all npm packages
 - Fix lint errors that appeared after eslint upgrade
 - Rebuild using `prebaked-geojson-map`
+- Improve extracted altitude data (add support in two sources; convert feet to
+  meters in three sources)
 
 ## 0.0.1 - 2017-04-25
 ### Added

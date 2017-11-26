@@ -28,6 +28,7 @@ class Reporter
   end
 
   def process_row(data)
+    altitude = data.key?('altitude') ? data['altitude'] * 0.3048 : nil
     # Timestamp is included both as a float and as an ISO 8601 timestamp.
     timestamp = if data['timestamp'].is_a?(String) then Time.parse(data['timestamp'])
                 # +timestamp+ doesn't include a leading +1+.
@@ -38,7 +39,7 @@ class Reporter
       coordinates: [
         data['latitude'],
         data['longitude'],
-        nil,
+        altitude,
       ].freeze,
       name: data.dig('placemark', 'name'),
       timestamp: timestamp,

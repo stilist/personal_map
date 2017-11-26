@@ -47,7 +47,7 @@ class Google
       coordinates: [
         data['latitudeE7'] / 1e7,
         data['longitudeE7'] / 1e7,
-        data['altitude'],
+        data['altitude'] * 0.3048,
       ],
       name: '',
       note: nil,

@@ -36,7 +36,13 @@ class Gpx
   def process_paths(data)
     data.tracks.map do |track|
       coordinates = track.segments.map do |segment|
-        segment.points.map { |point| [point.lon, point.lat].freeze }
+        segment.points.map do |point|
+          [
+            point.lon,
+            point.lat,
+            point.elevation
+          ].freeze
+        end
       end
 
       {
@@ -53,10 +59,13 @@ class Gpx
   def process_points(data)
     data.waypoints.map do |point|
       {
+        coordinates: [
+          point.lat,
+          point.lon,
+          point.elevation,
+        ].freeze,
         name: '',
         note: nil,
-        lat: point.lat,
-        lng: point.lon,
         timestamp: point.time,
       }.freeze
     end
