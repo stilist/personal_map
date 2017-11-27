@@ -10,7 +10,7 @@ module Parser
 
       document = ::Nokogiri::XML(file)
       segments = document.css('Folder')
-      parsed = segments.map { |segment| to_geojson(segment) }.
+      parsed = segments.map { |segment| extract_paths(segment) }.
         flatten.
         compact
 
@@ -26,7 +26,7 @@ module Parser
 
     private
 
-    def to_geojson(segment)
+    def extract_paths(segment)
       coordinates = segment.css('LineString > coordinates')
       return if coordinates.empty?
 
