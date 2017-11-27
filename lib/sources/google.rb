@@ -25,7 +25,7 @@ class Google
     files = ::Dir["#{@root}/manual_walk_export/*.kml"]
 
     paths = files.map do |file|
-      ::Parser::KML.new(path: file).
+      ::Parser::KML.new(path: file, type: :path).
         data[:features].
         map { |row| row[:geometry].merge(properties: row[:properties]) }
     end

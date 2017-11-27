@@ -5,17 +5,19 @@ require_relative '../to_geojson_path'
 
 module Parser
   class KML
-    def initialize(path:)
+    def initialize(path:, type:)
       file = ::File.open(::File.expand_path(path))
 
       document = ::Nokogiri::XML(file)
       segments = document.css('Folder')
-      parsed = segments.map { |segment| extract_paths(segment) }.
-        flatten.
-        compact
 
-      @data = ::ToGeojsonPath.new(data: parsed).
-        data
+      @data = case type
+        when :path
+          parsed = segments.map { |segment| extract_paths(segment) }.
+            flatten.
+            compact
+          ::ToGeojsonPath.new(data: parsed).data
+      end
     end
 
     attr_reader :data
