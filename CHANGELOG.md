@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 - Add location search
 - Add `LICENSE` file
+- Support point data in KML files
 
 ### Changed
 - Upgrade all npm packages

@@ -2,6 +2,7 @@
 
 require 'nokogiri'
 require_relative '../to_geojson_path'
+require_relative '../to_geojson_point'
 
 module Parser
   class KML
@@ -17,6 +18,11 @@ module Parser
             flatten.
             compact
           ::ToGeojsonPath.new(data: parsed).data
+        when :point
+          parsed = segments.map { |segment| extract_points(segment) }.
+            flatten.
+            compact
+          ::ToGeojsonPoint.new(data: parsed).geojson
       end
     end
 
@@ -44,6 +50,26 @@ module Parser
           activity: activity,
         }.freeze,
       }.freeze
+    end
+
+    def extract_points(segment)
+      points = segment.css('Placemark').
+        reject { |placemark| placemark.css('> Point').empty? }
+
+      points.map do |point|
+        note = point.css('description').text.slice(point.css('name').text)
+
+        {
+          coordinates: extract_coordinates(point.css('coordinates').text),
+          name: point.css('name').text,
+          # Foursquare description is always in the format
+          #   @<a href="https://foursquare.com/v/...">[name]</a>
+          # If the user has included a comment the `</a>` is followed by
+          # `- [user comment]`.
+          note: note,
+          timestamp: Time.parse(point.css('published').text).iso8601,
+        }.freeze
+      end
     end
 
     # @example
