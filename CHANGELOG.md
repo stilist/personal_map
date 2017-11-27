@@ -5,6 +5,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+
+## [0.0.2] - 2017-11-26
 ### Added
 - Add location search
 - Add `LICENSE` file
@@ -21,4 +23,5 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 - Initial release
 
-[Unreleased]: https://github.com/stilist/personal_map/compare/v0.0.1...master
+[Unreleased]: https://github.com/stilist/personal_map/compare/v0.0.2...master
+[0.0.2]: https://github.com/stilist/personal_map/compare/v0.0.1...0.0.2
