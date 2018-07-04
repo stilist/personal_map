@@ -6,7 +6,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 ### Changed
-- Support multiple exports in `google/` data path
+- Support multiple exports in `google` and `moves_export` data paths
 
 ## [0.0.2] - 2017-11-26
 ### Added

@@ -21,14 +21,20 @@ class Moves
   private
 
   def extract_points
-    raw = ::File.read("#{@root}_export/geojson/full/places.geojson")
-    processed = process_point_data(raw)
+    files = ::Dir["#{@root}_export/*/geojson/full/places.geojson"]
+    points = files.map do |file|
+      raw = File.read(file)
+      json = ::JSON.parse(raw)
+      process_point_data(json).flatten(1).
+        compact
+    end
+
+    ::ToGeojsonPoint.new(data: points.flatten).
+      geojson
   end
 
-  def process_point_data(data)
-    json = ::JSON.parse(data)
-
-    processed = json['features'].map do |row|
+  def process_point_data(json)
+    json['features'].map do |row|
       properties = row['properties']
       coordinates = row.dig('geometry', 'coordinates')
 
@@ -41,16 +47,20 @@ class Moves
       }.freeze
     end
 
-    ::ToGeojsonPoint.new(data: processed).
-      geojson
+    # ::ToGeojsonPoint.new(data: processed).
+    #   geojson
   end
 
   def extract_paths
-    raw = ::File.read("#{@root}_export/geojson/full/storyline.geojson")
-    processed = process_path_data(raw).flatten(1).
-      compact
+    files = ::Dir["#{@root}_export/*/geojson/full/storyline.geojson"]
+    paths = files.map do |file|
+      raw = File.read(file)
+      json = ::JSON.parse(raw)
+      process_path_data(json).flatten(1).
+        compact
+    end
 
-    ::ToGeojsonPath.new(data: processed).
+    ::ToGeojsonPath.new(data: paths.flatten(1)).
       geojson
   end
 
@@ -77,9 +87,7 @@ class Moves
     [startTime, endTime].map { |t| t&.iso8601 }
   end
 
-  def process_path_data(data)
-    json = ::JSON.parse(data)
-
+  def process_path_data(json)
     json['features'].select { |row| row['geometry']['type'] == 'MultiLineString' }.
       map do |row|
         activities = row['properties']['activities']
