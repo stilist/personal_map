@@ -35,10 +35,14 @@ class Google
   end
 
   def extract_location_history
-    raw = ::File.read("#{@root}/Location\ History/LocationHistory.json")
-    json = ::JSON.parse(raw)
-    rows = json['locations'].map { |r| process_history_row(r) }
-    ::ToGeojsonPoint.new(data: rows).
+    files = ::Dir["#{@root}/*/Location History/Location History.json"]
+    points = files.map do |file|
+      raw = File.read(file)
+      json = ::JSON.parse(raw)
+      rows = json['locations'].map { |r| process_history_row(r) }
+    end
+
+    ::ToGeojsonPoint.new(data: points.flatten(1)).
       geojson
   end
 
