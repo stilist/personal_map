@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Upgrade all gems
 - Upgrade to Ruby 2.5.1
 - Replace `SEQ:` with `SEQUENCE:` in iCalendar (`.ics`) files before parsing, to silence an unhelpful warning from the `icalendar` gem
+- Import Moves data from `daily` GeoJSON files instead of `full` files, to simplify merging data from multiple Moves accounts
 
 ## [0.0.2] - 2017-11-26
 ### Added
