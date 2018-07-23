@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Changed
 - Support multiple exports in `google` and `moves_export` data paths
 - Upgrade all gems
+- Upgrade to Ruby 2.5.1
 
 ## [0.0.2] - 2017-11-26
 ### Added

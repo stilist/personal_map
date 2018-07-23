@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.4.0'
+ruby RUBY_VERSION
 
 gem 'activesupport', '~> 5.2.0', require: false
 gem 'byebug', '~> 10.0.0', require: false
