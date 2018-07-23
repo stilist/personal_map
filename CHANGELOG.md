@@ -5,6 +5,9 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+### Added
+- Extract [Gyroscope Places](https://gyrosco.pe/places/) data that's been pre-processed with [the history importer](https://github.com/stilist/history_importer)
+
 ### Changed
 - Support multiple exports in `google` and `moves_export` data paths
 - Upgrade all gems

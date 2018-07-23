@@ -12,12 +12,12 @@ OUTPUT_ROOT = ::File.expand_path('tmp')
 ::Dir.mkdir(OUTPUT_ROOT) if !::File.exists?(OUTPUT_ROOT)
 
 ::ActiveSupport::Inflector.inflections(:en) do |inflect|
-  inflect.uncountable(%w(moves openpaths photos))
+  inflect.uncountable(%w(gyroscope_places moves openpaths photos))
 end
 
 source_types = {
-  path: %i(flightaware google gpx moves moves_raw openpaths),
-  point: %i(dopplr facebook foursquare google gowalla gpx moves photos reporter),
+  path: %i(flightaware google gpx gyroscope_places moves moves_raw openpaths),
+  point: %i(dopplr facebook foursquare google gowalla gpx gyroscope_places moves photos reporter),
 }
 
 source_types.each do |source_type, sources|
