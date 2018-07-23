@@ -99,6 +99,8 @@ class Moves
           # miles.)
           next if activity['activity'] == 'airplane' &&
             activity['distance'] > 50_000
+          next if activity['activity'] == 'transport' &&
+            activity['distance'] > 500_000
 
           startTime, endTime = parse_activity_times(activities, index)
           {
