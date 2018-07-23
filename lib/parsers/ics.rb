@@ -6,7 +6,8 @@ require_relative '../to_geojson_point'
 module Parser
   class ICS
     def initialize(path:)
-      file = ::File.open(::File.expand_path(path))
+      file = ::File.read(::File.expand_path(path))
+      file.gsub!(/^SEQ:/, 'SEQUENCE:')
 
       parsed = ::Icalendar::Calendar.parse(file).
         first.
