@@ -13,6 +13,8 @@ class Openpaths
 
     @data = ::ToGeojsonPath.new(data: processed).
       geojson
+  rescue ::TypeError
+    @data = []
   end
 
   def geojson

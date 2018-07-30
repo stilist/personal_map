@@ -30,5 +30,7 @@ class MergeGeojson
     data = ::JSON.parse(raw)
 
     data['features']
+  rescue TypeError
+    []
   end
 end

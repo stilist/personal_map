@@ -24,6 +24,8 @@ module Parser
             compact
           ::ToGeojsonPoint.new(data: parsed).geojson
       end
+    rescue ::TypeError
+      @data = []
     end
 
     attr_reader :data

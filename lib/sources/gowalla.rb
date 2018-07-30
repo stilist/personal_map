@@ -8,6 +8,8 @@ class Gowalla
     processed = process_data(raw)
 
     @data = raw
+  rescue ::Errno::ENOENT
+    @data = []
   end
 
   def geojson

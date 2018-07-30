@@ -16,6 +16,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Import Moves data from `daily` GeoJSON files instead of `full` files, to simplify merging data from multiple Moves accounts
 - Sort paths and points by `startTime` when possible
 
+### Fixed
+- Handle case that `HISTORY_DATA_PATH` doesn't have data for various parsers
+
 ## [0.0.2] - 2017-11-26
 ### Added
 - Add location search

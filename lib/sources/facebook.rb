@@ -11,6 +11,8 @@ class Facebook
     formatted = parsed['data'].map { |row| process_row(row) }
     @data = ::ToGeojsonPoint.new(data: formatted).
       geojson
+  rescue ::Errno::ENOENT
+    @data = []
   end
 
   def geojson

@@ -9,6 +9,8 @@ class Photos
     parsed = ::JSON.parse(raw, symbolize_names: true)
     @data = ::ToGeojsonPoint.new(data: parsed).
       geojson
+  rescue ::Errno::ENOENT
+    @data = []
   end
 
   def geojson

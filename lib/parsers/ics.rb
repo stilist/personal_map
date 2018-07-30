@@ -14,6 +14,8 @@ module Parser
         events
 
       @data = to_geojson(parsed)
+    rescue ::TypeError
+      @data = []
     end
 
     def geojson

@@ -14,6 +14,8 @@ class GyroscopePlaces
       when :path then extract_paths
       when :point then extract_points
     end
+  rescue ::Errno::ENOENT
+    @data = []
   end
 
   def geojson
