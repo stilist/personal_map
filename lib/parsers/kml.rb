@@ -79,9 +79,11 @@ module Parser
     #   #=> [-122.6817855911751, 45.52572423965363, nil]
     #   extract_coordinates("-76.97092,40.35459,0.0")
     #   #=> [-76.97092, 40.35459, 0.0]
+    #   extract_coordinates("-76.75045,41,0")
+    #   #=> [-76.75045, 41, 0]
     def extract_coordinates(point)
       Array.new(3).
-        replace(point.scan(/-?\d{1,3}\.\d+/)).
+        replace(point.scan(/-?\d{1,3}(?:\.\d+)?/)).
         map { |n| n&.to_f }
     end
   end
