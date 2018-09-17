@@ -22,7 +22,7 @@ class Google
 
   def extract_maps
     # TODO fix path lookup
-    files = ::Dir["#{@root}/manual_walk_export/*.kml"]
+    files = ::Dir["#{@root}/*/manual_walk_export/*.kml"]
 
     paths = files.map do |file|
       ::Parser::KML.new(path: file, type: :path).
