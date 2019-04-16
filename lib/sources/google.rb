@@ -22,12 +22,11 @@ class Google
 
   def extract_maps
     # TODO fix path lookup
-    files = ::Dir["#{@root}/*/manual_walk_export/*.kml"]
+    files = ::Dir["#{@root}/complete exports/google/**/manual_walk_export/*.kml"]
 
     paths = files.map do |file|
       ::Parser::KML.new(path: file, type: :path).
-        data[:features].
-        map { |row| row[:geometry].merge(properties: row[:properties]) }
+        data
     end
 
     ::ToGeojsonPath.new(data: paths.flatten(1)).
@@ -35,7 +34,7 @@ class Google
   end
 
   def extract_location_history
-    files = ::Dir["#{@root}/*/Location History/Location History.json"]
+    files = ::Dir["#{@root}/complete exports/google/**/Location History/Location History.json"]
     points = files.map do |file|
       raw = File.read(file)
       json = ::JSON.parse(raw)

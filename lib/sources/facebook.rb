@@ -5,11 +5,16 @@ require_relative '../to_geojson_point'
 
 class Facebook
   def initialize(root:, type:)
-    raw = ::File.read("#{root}/tagged_places.json")
-    parsed = ::JSON.parse(raw)
+    files = ::Dir["#{root}/complete exports/facebook/**/location/location_history.json"]
 
-    formatted = parsed['data'].map { |row| process_row(row) }
-    @data = ::ToGeojsonPoint.new(data: formatted).
+    points = files.map do |file|
+      raw = ::File.read(file)
+      data = ::JSON.parse(raw)
+      process_point_data(data).flatten(1).
+        compact
+    end
+
+    @data = ::ToGeojsonPoint.new(data: points.flatten).
       geojson
   rescue ::Errno::ENOENT
     @data = []
@@ -21,13 +26,15 @@ class Facebook
 
   private
 
-  def process_row(data)
-    {
-      name: data['place']['name'],
-      note: nil,
-      lat: data['place']['location']['latitude'],
-      lng: data['place']['location']['longitude'],
-      timestamp: data['created_time']
-    }.freeze
+  def process_point_data(data)
+    data['location_history_all'].map do |entry|
+      {
+        name: entry['name'],
+        note: nil,
+        lat: entry['coordinate']['latitude'],
+        lng: entry['coordinate']['longitude'],
+        timestamp: data['creation_timestamp'],
+      }.freeze
+    end
   end
 end

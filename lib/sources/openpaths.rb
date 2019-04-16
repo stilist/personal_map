@@ -5,7 +5,7 @@ require_relative '../to_geojson_path'
 
 class Openpaths
   def initialize(root:, type:)
-    filename = ::Dir.glob("#{root}/openpaths_*.json").
+    filename = ::Dir.glob("#{root}/partial exports/openpaths/openpaths_*.json").
       last
 
     raw = ::File.read(filename)

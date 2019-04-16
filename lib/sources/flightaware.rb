@@ -5,7 +5,7 @@ require_relative '../to_geojson_path'
 
 class Flightaware
   def initialize(root:, type:)
-    raw = ::File.read("#{root}/flightaware.json")
+    raw = ::File.read("#{root}/manual reconstructions/flightaware/flightaware.json")
     processed = process_data(raw)
 
     @data = ::ToGeojsonPath.new(data: processed).

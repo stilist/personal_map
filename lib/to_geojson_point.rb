@@ -13,6 +13,8 @@ class ToGeojsonPoint
       coords[0].nil? || (coords[0] == 0 && coords[1] == 0)
     end
 
+    valid_points.uniq!
+
     @data = wrap_points(valid_points)
   end
 

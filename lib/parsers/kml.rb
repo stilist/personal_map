@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 require 'nokogiri'
-require_relative '../to_geojson_path'
-require_relative '../to_geojson_point'
 
 module Parser
   class KML
@@ -14,25 +12,19 @@ module Parser
 
       @data = case type
         when :path
-          parsed = segments.map { |segment| extract_paths(segment) }.
+          segments.map { |segment| extract_paths(segment) }.
             flatten.
             compact
-          ::ToGeojsonPath.new(data: parsed).data
         when :point
-          parsed = segments.map { |segment| extract_points(segment) }.
+          segments.map { |segment| extract_points(segment) }.
             flatten.
             compact
-          ::ToGeojsonPoint.new(data: parsed).geojson
       end
     rescue ::TypeError
       @data = []
     end
 
     attr_reader :data
-
-    def geojson
-      @data.geojson
-    end
 
     private
 

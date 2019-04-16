@@ -21,7 +21,7 @@ class Moves
   private
 
   def extract_points
-    files = ::Dir["#{@root}_export/*/geojson/daily/places/*.geojson"]
+    files = ::Dir["#{@root}/automated imports/moves/**/geojson/daily/places/*.geojson"]
     points = files.map do |file|
       raw = File.read(file)
       json = ::JSON.parse(raw)
@@ -52,7 +52,7 @@ class Moves
   end
 
   def extract_paths
-    files = ::Dir["#{@root}_export/*/geojson/daily/storyline/*.geojson"]
+    files = ::Dir["#{@root}/automated imports/moves/**/geojson/daily/storyline/*.geojson"]
     paths = files.map do |file|
       raw = File.read(file)
       json = ::JSON.parse(raw)

@@ -1,13 +1,16 @@
 # frozen_string_literal: true
 
 require_relative '../parsers/ics'
+require_relative '../to_geojson_point'
 
 class Dopplr
   def initialize(root:, type:)
-    filename = ::Dir.glob("#{root}/*.ics").
+    filename = ::Dir.glob("#{root}/partial exports/dopplr/*.ics").
       last
 
-    @data = ::Parser::ICS.new(path: filename).
+    points = ::Parser::ICS.new(path: filename).
+      data
+    @data = ::ToGeojsonPoint.new(data: points).
       geojson
   end
 

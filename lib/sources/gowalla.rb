@@ -4,7 +4,7 @@ require 'json'
 
 class Gowalla
   def initialize(root:, type:)
-    raw = ::File.read("#{root}/gowalla.json")
+    raw = ::File.read("#{root}/partial exports/gowalla/gowalla.json")
     processed = process_data(raw)
 
     @data = raw

@@ -7,7 +7,7 @@ require_relative '../to_geojson_point'
 class Gpx
   def initialize(root:, type:)
     @type = type
-    files = ::Dir.glob("#{root}/*.gpx")
+    files = ::Dir.glob("#{root}/manual reconstructions/gpx/*.gpx")
 
     processed = files.map { |f| process_file(f) }.
       flatten(1)

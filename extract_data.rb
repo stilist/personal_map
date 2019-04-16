@@ -16,8 +16,8 @@ OUTPUT_ROOT = ::File.expand_path('tmp')
 end
 
 source_types = {
-  path: %i(flightaware google gpx gyroscope_places moves moves_raw openpaths),
-  point: %i(dopplr facebook foursquare google gowalla gpx gyroscope_places moves photos reporter),
+  path: %i(flightaware google gpx gyroscope moves openpaths),
+  point: %i(dopplr facebook foursquare google gowalla gpx gyroscope moves photos reporter),
 }
 
 source_types.each do |source_type, sources|
@@ -27,7 +27,7 @@ source_types.each do |source_type, sources|
     klass = source.to_s.
       classify.
       constantize
-    parsed = klass.new(root: "#{DATA_ROOT}/#{source}", type: source_type).
+    parsed = klass.new(root: DATA_ROOT, type: source_type).
       geojson
 
     out_path = ::File.join(OUTPUT_ROOT, "#{source}_#{source_type}.json")

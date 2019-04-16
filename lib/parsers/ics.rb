@@ -12,24 +12,14 @@ module Parser
       parsed = ::Icalendar::Calendar.parse(file).
         first.
         events
-
-      @data = to_geojson(parsed)
+      @data = parsed.map { |row| row_for_geojson(row) }
     rescue ::TypeError
       @data = []
     end
 
-    def geojson
-      @data
-    end
+    attr_reader :data
 
     private
-
-    def to_geojson(data)
-      prepared = data.map { |row| row_for_geojson(row) }
-
-      ::ToGeojsonPoint.new(data: prepared).
-        geojson
-    end
 
     def row_for_geojson(row)
       if row.description == row.summary || row.description == 'No notes so far.'

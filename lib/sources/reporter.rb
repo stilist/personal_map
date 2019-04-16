@@ -5,7 +5,7 @@ require_relative '../to_geojson_point'
 
 class Reporter
   def initialize(root:, type:)
-    files = ::Dir.glob("#{root}/*.json")
+    files = ::Dir.glob("#{root}/partial exports/reporter/*.json")
 
     processed = files.map { |f| read_file(f) }.
       flatten
