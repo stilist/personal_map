@@ -19,6 +19,7 @@ GEM
     nokogiri (1.10.3)
       mini_portile2 (~> 2.4.0)
     rake (12.3.1)
+    rubyzip (1.2.2)
     thread_safe (0.3.6)
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
@@ -32,6 +33,7 @@ DEPENDENCIES
   gpx (~> 1.0.0)
   icalendar (~> 2.4.0)
   nokogiri (~> 1.10.3)
+  rubyzip (~> 1.2.2)
 
 RUBY VERSION
    ruby 2.6.1p33

@@ -21,8 +21,10 @@ class Google
   private
 
   def extract_maps
-    # TODO fix path lookup
-    files = ::Dir["#{@root}/complete exports/google/**/manual_walk_export/*.kml"]
+    # Only use files with a name formatted like a date.
+    files = ::Dir["#{@root}/complete exports/google/**/My Maps/*.kmz"].select do |path|
+      ::File.basename(path, '.kmz') =~ /\A\d{4}/
+    end
 
     paths = files.map do |file|
       ::Parser::KML.new(path: file, type: :path).

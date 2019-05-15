@@ -1,13 +1,19 @@
 # frozen_string_literal: true
 
 require 'nokogiri'
+require 'zip'
 
 module Parser
   class KML
     def initialize(path:, type:)
-      file = ::File.open(::File.expand_path(path))
+      full_path = ::File.expand_path(path)
+      if ::File.extname(path) == '.kmz'
+        data = ::Zip::File.open(full_path) { |zip| zip.read('doc.kml') }
+      else
+        data = ::File.open(full_path)
+      end
 
-      document = ::Nokogiri::XML(file)
+      document = ::Nokogiri::XML(data)
       segments = document.css('Folder')
 
       @data = case type
