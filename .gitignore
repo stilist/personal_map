@@ -2,7 +2,8 @@
 
 /.byebug_history
 
-node_modules/
+node_modules
+node_modules.nosync/
 
 public/assets/
 public/*.json
