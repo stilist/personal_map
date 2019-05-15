@@ -6,7 +6,8 @@ require 'active_support/inflector'
 require 'fileutils'
 require_relative 'lib/merge_geojson'
 
-DATA_ROOT = ::File.expand_path(ENV.fetch('HISTORY_DATA_PATH') + '/data')
+DATA_ROOT = ::File.expand_path(ENV.fetch('HISTORY_DATA_PATH'))
+
 raise "Source data path doesn't exist (#{ENV['HISTORY_DATA_PATH']})" if !File.directory?(DATA_ROOT)
 OUTPUT_ROOT = ::File.expand_path('tmp')
 ::Dir.mkdir(OUTPUT_ROOT) if !::File.exists?(OUTPUT_ROOT)
