@@ -14,10 +14,10 @@ GEM
     i18n (1.0.1)
       concurrent-ruby (~> 1.0)
     icalendar (2.4.1)
-    mini_portile2 (2.3.0)
+    mini_portile2 (2.4.0)
     minitest (5.11.3)
-    nokogiri (1.8.4)
-      mini_portile2 (~> 2.3.0)
+    nokogiri (1.10.3)
+      mini_portile2 (~> 2.4.0)
     rake (12.3.1)
     thread_safe (0.3.6)
     tzinfo (1.2.5)
@@ -31,9 +31,10 @@ DEPENDENCIES
   byebug (~> 10.0.0)
   gpx (~> 1.0.0)
   icalendar (~> 2.4.0)
+  nokogiri (~> 1.10.3)
 
 RUBY VERSION
-   ruby 2.5.1p57
+   ruby 2.6.1p33
 
 BUNDLED WITH
-   1.16.2
+   1.17.2
