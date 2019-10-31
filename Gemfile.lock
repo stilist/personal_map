@@ -18,7 +18,7 @@ GEM
     ice_cube (0.16.3)
     mini_portile2 (2.4.0)
     minitest (5.11.3)
-    nokogiri (1.10.3)
+    nokogiri (1.10.4)
       mini_portile2 (~> 2.4.0)
     rake (12.3.2)
     rubyzip (1.2.3)
@@ -34,7 +34,7 @@ DEPENDENCIES
   byebug (~> 11.0.0)
   gpx (~> 1.0.0)
   icalendar (~> 2.5.0)
-  nokogiri (~> 1.10.3)
+  nokogiri (~> 1.10.4)
   rubyzip (~> 1.2.2)
 
 RUBY VERSION
