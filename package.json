@@ -27,7 +27,7 @@
     "topojson": "^3.0.2",
     "url-loader": "^0.6.0",
     "webpack": "^3.8.0",
-    "whatwg-fetch": "^2.0.3"
+    "whatwg-fetch": "^3.0.0"
   },
   "scripts": {
     "build": "npm run lint && webpack --progress",
