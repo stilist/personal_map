@@ -27,6 +27,7 @@
     "topojson": "^3.0.2",
     "url-loader": "^0.6.0",
     "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10",
     "whatwg-fetch": "^3.0.0"
   },
   "scripts": {
