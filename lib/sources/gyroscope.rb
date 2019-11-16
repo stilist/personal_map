@@ -65,6 +65,8 @@ class Gyroscope
 
   def process_path_data(csv)
     valid_rows(csv).map do |row|
+      next if row[3].nil?
+
       raw_coordinates = row[3].gsub('(', '[')
         .gsub(')', ']')
       coordinates = eval("[#{raw_coordinates}]").map do |pair|
@@ -92,7 +94,7 @@ class Gyroscope
     last_index = csv.first.length - 1
 
     csv.select do |row|
-      row[last_index] =~ /(?:gyroscope|places)/
+      row[last_index] =~ /(?:gyroscope|moves|places)/
     end
   end
 end
