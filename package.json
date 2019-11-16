@@ -5,7 +5,7 @@
   "author": "Jordan Cole <code@ratafia.info>",
   "license": "MIT",
   "devDependencies": {
-    "css-loader": "^2.1.1",
+    "css-loader": "^3.2.0",
     "d3": "^5.13.1",
     "eslint": "^6.6.0",
     "eslint-config-standard": "^14.1.0",
