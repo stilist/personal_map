@@ -15,9 +15,17 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Replace `SEQ:` with `SEQUENCE:` in iCalendar (`.ics`) files before parsing, to silence an unhelpful warning from the `icalendar` gem
 - Import Moves data from `daily` GeoJSON files instead of `full` files, to simplify merging data from multiple Moves accounts
 - Sort paths and points by `startTime` when possible
+- Upgrade Ruby to 2.6.5
+- Upgrade `activesupport`, `nokogiri`, `rake`, `rubyzip` gems
+- Upgrade `css-loader`, `debug`, `eslint`, `eslint-config-standard`, `eslint-plugin-node`, `eslint-plugin-promise`, `eslint-plugin-standard`, `file-loader`, `leaflet`, `lodash`, `mixin-deep`, `serve`, `style-loader`, `url-loader`, `webpack`, `whatwg-fetch` packages
 
 ### Fixed
 - Handle case that `HISTORY_DATA_PATH` doesn't have data for various parsers
+- Upgrade dependencies to address all known vulnerabilities
+
+### Removed
+- Remove `leaflet-globe-minimap`, and `d3`, `exports-loader`, `imports-loader`, and `url-loader` dependencies that supported it
+- Remove `leaflet-geocoder-mapzen` -- Mapzen's services were disabled in early 2018
 
 ## [0.0.2] - 2017-11-26
 ### Added
