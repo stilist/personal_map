@@ -5,6 +5,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+
+## [0.0.3] - 2019-11-16
 ### Added
 - Extract [Gyroscope Places](https://gyrosco.pe/places/) data that's been pre-processed with [the history importer](https://github.com/stilist/history_importer)
 
@@ -44,5 +46,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 - Initial release
 
-[Unreleased]: https://github.com/stilist/personal_map/compare/v0.0.2...master
+[Unreleased]: https://github.com/stilist/personal_map/compare/v0.0.3...master
+[0.0.3]: https://github.com/stilist/personal_map/compare/v0.0.2...0.0.3
 [0.0.2]: https://github.com/stilist/personal_map/compare/v0.0.1...0.0.2
