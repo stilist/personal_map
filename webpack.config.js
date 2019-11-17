@@ -11,7 +11,7 @@ module.exports = {
     pathinfo: true,
     publicPath: '/assets/',
   },
-  mode: 'development',
+  mode: 'production',
 
   module: {
     rules: [{
