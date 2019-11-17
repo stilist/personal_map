@@ -1174,10 +1174,6 @@ d3-zoom@1:
     d3-selection "1"
     d3-transition "1"
 
-d3@^3.5.0:
-  version "3.5.17"
-  resolved "https://registry.yarnpkg.com/d3/-/d3-3.5.17.tgz#bc46748004378b21a360c9fc7cf5231790762fb8"
-
 d3@^5.13.1:
   version "5.13.1"
   resolved "https://registry.yarnpkg.com/d3/-/d3-5.13.1.tgz#0f0071bd0011509dc4ee17ea4513eefce4420402"
@@ -2568,21 +2564,9 @@ leaflet-geocoder-mapzen@^1.9.4:
     "@mapbox/corslite" "0.0.7"
     console-polyfill "0.2.3"
 
-"leaflet-globe-minimap@git+https://github.com/chriswhong/leaflet-globeminimap.git":
-  version "0.0.1"
-  resolved "git+https://github.com/chriswhong/leaflet-globeminimap.git#bb07c1981ff3eaece35ba6ae244e9d6ce8e7c805"
-  dependencies:
-    d3 "^3.5.0"
-    leaflet ">=0.7.3"
-    topojson-client "^3.0.0"
-
 leaflet.visualclick@^1.1.4:
   version "1.1.4"
   resolved "https://registry.yarnpkg.com/leaflet.visualclick/-/leaflet.visualclick-1.1.4.tgz#d79588cc7b72fbf3ce6d2547e852ab1fed432b30"
-
-leaflet@>=0.7.3:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/leaflet/-/leaflet-1.0.3.tgz#1f401b98b45c8192134c6c8d69686253805007c8"
 
 leaflet@^1.5.1:
   version "1.5.1"
@@ -4287,7 +4271,7 @@ to-regex@^3.0.1, to-regex@^3.0.2:
     regex-not "^1.0.2"
     safe-regex "^1.1.0"
 
-topojson-client@3, topojson-client@3.0.0, topojson-client@^3.0.0:
+topojson-client@3, topojson-client@3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/topojson-client/-/topojson-client-3.0.0.tgz#1f99293a77ef42a448d032a81aa982b73f360d2f"
   integrity sha1-H5kpOnfvQqRI0DKoGqmCtz82DS8=
