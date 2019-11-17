@@ -1,6 +1,4 @@
 import 'leaflet.visualclick'
-import 'd3'
-import 'topojson'
 import {
   add as createMap
 } from 'prebaked-geojson-map'

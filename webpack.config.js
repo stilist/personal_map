@@ -23,13 +23,6 @@ module.exports = {
     }, {
       test: /\.(gif|jpe?g|png)$/,
       loader: 'file-loader',
-    }, {
-      test: /\.json$/,
-      loader: 'url-loader',
-      type: 'javascript/auto',
-      options: {
-        limit: 1,
-      },
     }],
   },
 }
