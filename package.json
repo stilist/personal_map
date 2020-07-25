@@ -26,6 +26,7 @@
     "whatwg-fetch": "^3.0.0"
   },
   "resolutions": {
+    "eslint/**/acorn": ">=7.1.1",
     "kind-of": "^6.0.3",
     "minimist": ">=1.2.3",
     "serialize-javascript": ">=2.1.1"
