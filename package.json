@@ -26,7 +26,8 @@
     "whatwg-fetch": "^3.0.0"
   },
   "resolutions": {
-    "kind-of": "^6.0.3"
+    "kind-of": "^6.0.3",
+    "minimist": ">=1.2.3"
   },
   "scripts": {
     "build": "npm run lint && webpack --progress",
