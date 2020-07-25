@@ -6,7 +6,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 ### Fixed
-- Upgrade `kind-of`, `minimist`, and `serve` dependencies to address vulnerability
+- Upgrade `kind-of`, `minimist`, `serialize-javascript`, and `serve` dependencies to address vulnerability
 
 ## [0.0.3] - 2019-11-16
 ### Added
