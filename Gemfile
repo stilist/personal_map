@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ruby RUBY_VERSION
 
-gem 'activesupport', '~> 6.0.3', require: false
+gem 'activesupport', '~> 6.1.7', require: false
 gem 'byebug', '~> 11.0.0', require: false
 gem 'gpx', '~> 1.0.0', require: false
 gem 'icalendar', '~> 2.5.0', require: false
